@@ -15,7 +15,8 @@ body{
     display:flex;
     flex:1;
     background-color: blue;
-    /* align-items:stretch; */
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -23,10 +24,23 @@ body{
     background-color: yellow;
     color: blue;
     flex: 0 0 auto;
-    width: 500px;
-
-    padding: 70px;
+    width: 80%;
+    height: 80%;
+    padding: 20px;
     margin: 20px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.box{
+    color:red;
+    background-color: black;
+    opacity: 0.5;
 
+}
+
+.highlight{
+    background-color: brown;
 }

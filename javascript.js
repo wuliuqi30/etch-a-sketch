@@ -27,32 +27,35 @@ function createGrid(numBoxesOnSide = 16) {
         // add a listener to each box to change its background color on hover
 
         box.addEventListener('mouseenter', (event) => {
-            //console.log(box.style.opacity);
-            
+
             if (isMouseDown) {
                 handleMouseEnter(event.target);
-                // // Get randomized RGB value:
-                // const randomColor = [Math.random() * 255, Math.random() * 255, Math.random() * 255];
-                // box.style.backgroundColor = `rgb(${randomColor})`;
-                // box.style.opacity = Math.min(Number(box.style.opacity) + 0.2, 1);
-
             }
 
         });
 
-        // box.addEventListener('touchmove', (event) => {
-        //     //console.log(box.style.opacity);
-        //     if (isTouching) {
-        //         const box = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
-        //         // Get randomized RGB value:
-        //         //console.log(event.touches[0]);
-        //         const randomColor = [Math.random() * 255, Math.random() * 255, Math.random() * 255];
-        //         box.style.backgroundColor = `rgb(${randomColor})`;
-        //         box.style.opacity = Math.min(Number(box.style.opacity) + 0.2, 1);
+        box.addEventListener('touchmove', (event) => {
 
-        //         //console.log(box.style.opacity);
-        //     }
-        // });
+            if (isTouching) {
+                const box = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
+                // Get randomized RGB value:
+                //console.log(event.touches[0]);
+                if (box && box !== lastTouchedBox && box.className === 'box') {
+                    handleMouseEnter(box);
+                    lastTouchedBox = box;
+                }
+
+            }
+        });
+
+        box.addEventListener('touchstart', (event) => {
+
+            const box = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
+            handleMouseEnter(box);
+            lastTouchedBox = box;
+
+
+        });
     }
 
     // Try one event listener on the parent box
@@ -67,7 +70,7 @@ function createGrid(numBoxesOnSide = 16) {
 
 }
 
-function handleMouseEnter(element){
+function handleMouseEnter(element) {
     const randomColor = [Math.random() * 255, Math.random() * 255, Math.random() * 255];
     element.style.backgroundColor = `rgb(${randomColor})`;
     element.style.opacity = Math.min(Number(element.style.opacity) + 0.2, 1);
@@ -100,17 +103,18 @@ document.addEventListener('mouseup', () => {
 
 
 let isTouching = 0;
+let lastTouchedBox = 'null';
 // Listen for touchstart
-document.addEventListener('touchstart', () => {
+document.addEventListener('touchstart', (event) => {
     isTouching = true;
-    mouseDownCounter++;
+    lastTouchedBox = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
     console.log(`Touch start OCCURED,mouseDownCounter = ${mouseDownCounter}`)
 });
 
 // Listen for the mouseup event to reset the flag to false
 document.addEventListener('touchend', () => {
     isTouching = false;
-    mouseUpCounter++;
+
     console.log(`Touch end OCCURED mouseUpCounter = ${mouseUpCounter}`)
 });
 

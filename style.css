@@ -13,10 +13,26 @@ body{
     
 }
 
+#howToPlay{
+    display:flex;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 0%;
+    text-align:left;
+    font-size: large;
+}
+
+
+#tom{
+    width:300px;
+    padding-left: 10px;
+}
+
 #numberOfSquaresButton{
     background-color: blue;
     color:white;
     width: fit-content;
+    font-size: large;
 }
 
 #buttonContainer{
@@ -25,6 +41,7 @@ body{
     align-items: center;
     padding:10px;
 }
+
 
 .section1{
     display:flex;

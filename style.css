@@ -1,27 +1,29 @@
 .title{
     background-color: rgb(253, 253, 253);
     text-align: center;
-    margin: 0;
+    margin: auto;
 }
 
 body{
     margin:0;
-    height:100vh;
+
     display:flex;
     flex-direction: column;
     cursor:auto;
-
+}
 
 #howToPlay{
     display:flex;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
     padding-bottom: 0%;
-    text-align:left;
-    font-size: large;
-    max-height: 40%;
-    min-width: 500px;
-    flex: 0 0 auto;
+
+
+    width:fit-content;
+    flex: 1 0 auto;
+    margin: auto;
+    align-items: center;
+    flex-direction: column;
 }
 
 
@@ -36,14 +38,15 @@ body{
     color:white;
     width: fit-content;
     font-size: large;
-    margin-top: 50px;
+    margin: 10px;
 }
 
 #buttonContainer{
     display:flex;
     justify-content: center;
     align-items: center;
-    padding:10px;
+    margin: 10px;
+
 }
 
 
@@ -54,15 +57,18 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 60%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin:auto;
 }
 
 .sketchContainer{
     background-color: rgb(217, 217, 217);
     color: rgba(157, 157, 169, 0.14);
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     padding: 0px;
-    margin: 20px;
+    margin: 30px;
     display: flex;
     flex-wrap:wrap;
     justify-content: space-between;

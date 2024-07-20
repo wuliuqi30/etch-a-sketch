@@ -37,6 +37,7 @@ body{
     color:white;
     width: fit-content;
     font-size: large;
+    margin-top: 50px;
 }
 
 #buttonContainer{
@@ -59,7 +60,6 @@ body{
 .sketchContainer{
     background-color: rgb(217, 217, 217);
     color: rgba(157, 157, 169, 0.14);
-    flex: 0 0 auto;
     width: 500px;
     height: 500px;
     padding: 0px;
@@ -75,6 +75,7 @@ body{
     color:red;
     background-color: black;
     opacity: 0;
+
 
 }
 

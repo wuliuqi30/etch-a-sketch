@@ -5,7 +5,7 @@ sketchContainer = document.querySelector('.sketchContainer');
 
 //const boxArray = [];
 function createGrid(numBoxesOnSide = 16) {
-    
+
     for (i = 0; i < numBoxesOnSide ** 2; i++) {
         const box = document.createElement('div');
 
@@ -26,15 +26,53 @@ function createGrid(numBoxesOnSide = 16) {
 
         // add a listener to each box to change its background color on hover
 
-        box.addEventListener('mouseenter', () => {
+        box.addEventListener('mouseenter', (event) => {
             //console.log(box.style.opacity);
+            
             if (isMouseDown) {
-                box.style.opacity = Math.min(Number(box.style.opacity) + 0.2, 1);
-                //console.log(box.style.opacity);
+                handleMouseEnter(event.target);
+                // // Get randomized RGB value:
+                // const randomColor = [Math.random() * 255, Math.random() * 255, Math.random() * 255];
+                // box.style.backgroundColor = `rgb(${randomColor})`;
+                // box.style.opacity = Math.min(Number(box.style.opacity) + 0.2, 1);
+
             }
+
         });
+
+        // box.addEventListener('touchmove', (event) => {
+        //     //console.log(box.style.opacity);
+        //     if (isTouching) {
+        //         const box = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
+        //         // Get randomized RGB value:
+        //         //console.log(event.touches[0]);
+        //         const randomColor = [Math.random() * 255, Math.random() * 255, Math.random() * 255];
+        //         box.style.backgroundColor = `rgb(${randomColor})`;
+        //         box.style.opacity = Math.min(Number(box.style.opacity) + 0.2, 1);
+
+        //         //console.log(box.style.opacity);
+        //     }
+        // });
     }
+
+    // Try one event listener on the parent box
+    // sketchContainer.addEventListener('mouseover', (event) => {
+    //         //console.log("Adding a single sketch container event listener");
+    //         const target = event.target;
+    //         if (isMouseDown && target.className === 'box' ) {
+    //             target.style.opacity = Math.min(Number(target.style.opacity) + 0.2, 1);
+    //             //console.log(box.style.opacity);
+    //         }
+    //     });
+
 }
+
+function handleMouseEnter(element){
+    const randomColor = [Math.random() * 255, Math.random() * 255, Math.random() * 255];
+    element.style.backgroundColor = `rgb(${randomColor})`;
+    element.style.opacity = Math.min(Number(element.style.opacity) + 0.2, 1);
+}
+
 
 const body = document.querySelector("body");
 body.addEventListener("dragstart", (event) => {
@@ -60,28 +98,45 @@ document.addEventListener('mouseup', () => {
     console.log(`MOUSE UP OCCURED mouseUpCounter = ${mouseUpCounter}`)
 });
 
+
+let isTouching = 0;
+// Listen for touchstart
+document.addEventListener('touchstart', () => {
+    isTouching = true;
+    mouseDownCounter++;
+    console.log(`Touch start OCCURED,mouseDownCounter = ${mouseDownCounter}`)
+});
+
+// Listen for the mouseup event to reset the flag to false
+document.addEventListener('touchend', () => {
+    isTouching = false;
+    mouseUpCounter++;
+    console.log(`Touch end OCCURED mouseUpCounter = ${mouseUpCounter}`)
+});
+
+
 button = document.getElementById('numberOfSquaresButton')
 
 button.addEventListener("click", () => {
-    let numBoxesPerRow = 0; 
+    let numBoxesPerRow = 0;
     do {
         numBoxesPerRow = prompt("How many squares per side for a new game?", "");
-        if (numBoxesPerRow >100){
+        if (numBoxesPerRow > 100) {
             alert("Please choose 100 or less rows!");
         }
     } while (numBoxesPerRow > 100)
     deleteGrid();
     console.log(`about to create a new grid with ${numBoxesPerRow} boxes per row`);
-    createGrid(numBoxesPerRow); 
+    createGrid(numBoxesPerRow);
 });
 
 function deleteGrid() {
     allBoxes = document.querySelectorAll(".box");
     console.log("deleting grid");
     allBoxes.forEach(
-        function(node,index) {
+        function (node, index) {
             node.remove();
-        }    
+        }
     )
 }
 

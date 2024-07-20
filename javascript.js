@@ -35,7 +35,7 @@ function createGrid(numBoxesOnSide = 16) {
         });
 
         box.addEventListener('touchmove', (event) => {
-
+            event.preventDefault();
             if (isTouching) {
                 const box = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
                 // Get randomized RGB value:

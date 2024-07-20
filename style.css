@@ -10,7 +10,7 @@ body{
     display:flex;
     flex-direction: column;
     cursor:auto;
-    
+    touch-action: none;
 }
 
 #howToPlay{

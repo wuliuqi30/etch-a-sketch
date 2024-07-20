@@ -1,6 +1,6 @@
 .title{
-    background-color: green;
-    /*text-align: center; */
+    background-color: rgb(253, 253, 253);
+    text-align: center;
     margin: 0;
 }
 
@@ -9,29 +9,35 @@ body{
     height:100vh;
     display:flex;
     flex-direction: column;
+    cursor:auto;
+}
+
+#numberOfSquares{
+    justify-content: center;
 }
 
 .section1{
     display:flex;
     flex:1;
-    background-color: blue;
+    background-color: white;
     justify-content: center;
     align-items: center;
 
 }
 
 .sketchContainer{
-    background-color: yellow;
-    color: blue;
+    background-color: rgb(217, 217, 217);
+    color: rgba(157, 157, 169, 0.14);
     flex: 0 0 auto;
     width: 80%;
     height: 80%;
-    padding: 20px;
+    padding: 0px;
     margin: 20px;
     display: flex;
     flex-wrap:wrap;
     justify-content: space-between;
     align-items: center;
+    border: 5px solid black;
 }
 
 .box{

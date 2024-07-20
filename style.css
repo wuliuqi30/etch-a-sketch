@@ -10,10 +10,20 @@ body{
     display:flex;
     flex-direction: column;
     cursor:auto;
+    
 }
 
-#numberOfSquares{
+#numberOfSquaresButton{
+    background-color: blue;
+    color:white;
+    width: fit-content;
+}
+
+#buttonContainer{
+    display:flex;
     justify-content: center;
+    align-items: center;
+    padding:10px;
 }
 
 .section1{

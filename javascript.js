@@ -5,7 +5,7 @@ sketchContainer = document.querySelector('.sketchContainer');
 
 //const boxArray = [];
 function createGrid(numBoxesOnSide = 16) {
-    console.log("Creating Grid")
+    
     for (i = 0; i < numBoxesOnSide ** 2; i++) {
         const box = document.createElement('div');
 
@@ -60,21 +60,30 @@ document.addEventListener('mouseup', () => {
     console.log(`MOUSE UP OCCURED mouseUpCounter = ${mouseUpCounter}`)
 });
 
-// button = document.getElementById('numberOfSquares')
+button = document.getElementById('numberOfSquaresButton')
 
-// button.addEventListener(() => {
-//     numBoxesPerRow = prompt("How many squares per side for a new game?", "");
-//     deleteGrid();
-// });
+button.addEventListener("click", () => {
+    let numBoxesPerRow = 0; 
+    do {
+        numBoxesPerRow = prompt("How many squares per side for a new game?", "");
+        if (numBoxesPerRow >100){
+            alert("Please choose 100 or less rows!");
+        }
+    } while (numBoxesPerRow > 100)
+    deleteGrid();
+    console.log(`about to create a new grid with ${numBoxesPerRow} boxes per row`);
+    createGrid(numBoxesPerRow); 
+});
 
-// function deleteGrid() {
-//     allBoxes = document.querySelectorAll("box");
-
-//     for (const boxI in allBoxes){
-//         allBoxes[boxI].remove();
-//     }
-
-// }
+function deleteGrid() {
+    allBoxes = document.querySelectorAll(".box");
+    console.log("deleting grid");
+    allBoxes.forEach(
+        function(node,index) {
+            node.remove();
+        }    
+    )
+}
 
 
 let defaultNumBoxesPerRow = 5;

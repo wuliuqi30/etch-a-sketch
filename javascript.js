@@ -4,7 +4,7 @@ sketchContainer = document.querySelector('.sketchContainer');
 // Put in a single row of evenly spaced flex boxes inside the sketchContainer
 
 //const boxArray = [];
-function createGrid(numBoxesOnSide = 16) {
+function createGrid(numBoxesOnSide = 50) {
 
     for (i = 0; i < numBoxesOnSide ** 2; i++) {
         const box = document.createElement('div');
@@ -145,6 +145,6 @@ function deleteGrid() {
 }
 
 
-let defaultNumBoxesPerRow = 5;
+let defaultNumBoxesPerRow = 50;
 console.log("about to create grid");
 createGrid(defaultNumBoxesPerRow); 
